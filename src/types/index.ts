@@ -23,4 +23,4 @@ export type Movie = {
 };
 
 
-export type FavouriteMovie = Movie & { dateAdded: number };
+export type FavouriteMovie = Movie & { dateAdded?: number };

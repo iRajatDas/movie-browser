@@ -40,7 +40,7 @@ export default function Page() {
   });
 
   // Handle filter changes
-  const handleFilterChange = (key: string, value: any) => {
+  const handleFilterChange = (key: string, value: string | number) => {
     setFilters((prev) => ({ ...prev, [key]: value }));
   };
 
@@ -271,7 +271,7 @@ export default function Page() {
         {hasSearched && !hasMore && movies.length > 0 && (
           <div className="grid place-items-center mt-8">
             <p className="text-center text-sm text-gray-500">
-              You've reached the end of the list.
+              You&apos;ve reached the end of the list.
             </p>
           </div>
         )}
