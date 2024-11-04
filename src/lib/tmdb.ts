@@ -48,6 +48,16 @@ const tmdb = {
       return { results: [], total_pages: 0, total_results: 0, page: 1 };
     }
   },
+
+  genres: async () => {
+    try {
+      const { data } = await api.get("/genre/movie/list");
+      return data.genres;
+    } catch (error) {
+      console.error("Error fetching movie genres:", error);
+      return [];
+    }
+  },
 };
 
 export default tmdb;

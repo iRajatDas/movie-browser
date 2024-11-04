@@ -1,11 +1,11 @@
-import { Movie } from "@/types";
+import { FavouriteMovie } from "@/types";
 import { create, StateCreator } from "zustand";
 import { createJSONStorage, persist, PersistOptions } from "zustand/middleware";
 
 type FavouriteStore = {
-  favoriteMovies: Movie[];
-  toggleFavorite: (movie: Movie) => void;
-  isFavorite: (movie: Movie) => boolean;
+  favoriteMovies: FavouriteMovie[];
+  toggleFavorite: (movie: FavouriteMovie) => void;
+  isFavorite: (movie: FavouriteMovie) => boolean;
 };
 
 type MyPersist = (
@@ -31,8 +31,13 @@ const useFavouriteStore = create<FavouriteStore, []>(
             };
           }
 
+          const movieWithDate = {
+            ...movie,
+            dateAdded: Date.now(),
+          } satisfies FavouriteMovie;
+
           return {
-            favoriteMovies: [...state.favoriteMovies, movie],
+            favoriteMovies: [...state.favoriteMovies, movieWithDate],
           };
         });
       },
